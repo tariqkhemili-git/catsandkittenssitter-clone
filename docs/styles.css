@@ -456,6 +456,10 @@ form .submit {
   top: 0;
 }
 
+.bottom-btn {
+  margin-bottom: 3em;
+}
+
 @media (max-width: 940px) {
   nav ul {
     gap: 1.5em;
