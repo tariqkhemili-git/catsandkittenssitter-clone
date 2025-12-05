@@ -6,6 +6,16 @@ function createImageGallery(containerSelector) {
   const prevBtn = container.querySelector(".gallery-left-arrow");
   const nextBtn = container.querySelector(".gallery-right-arrow");
   const galleryIndexEl = container.querySelector("#gallery-index");
+  const galleryCaption = container.querySelector(".gallery-caption");
+  const catNames = [
+    "Oliver",
+    "Zizi",
+    "Nancy",
+    "Sophia",
+    "Mr Onions",
+    "DaFu",
+    "Bertie",
+  ];
 
   if (!images.length || !prevBtn || !nextBtn) return;
 
@@ -23,7 +33,8 @@ function createImageGallery(containerSelector) {
       img.classList.add("hidden-img");
     }
   });
-
+  // Set initial caption to match the visible image
+  changeCaption();
   function showImage(newIndex) {
     if (newIndex < 0 || newIndex >= images.length) return;
     if (newIndex === currentIndex) return;
@@ -32,6 +43,13 @@ function createImageGallery(containerSelector) {
     images[newIndex].classList.remove("hidden-img");
     currentIndex = newIndex;
     galleryIndexEl.textContent = `${currentIndex + 1} / ${images.length}`;
+    changeCaption();
+  }
+
+  function changeCaption(index = currentIndex) {
+    if (!galleryCaption) return;
+    const name = catNames[index] ?? "";
+    galleryCaption.textContent = `Meet ${name}`;
   }
 
   prevBtn.addEventListener("click", () => {
