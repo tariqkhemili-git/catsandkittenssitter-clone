@@ -21,7 +21,7 @@
         <img src="/assets/logo-blog.png" alt="Cats and Kittens Sitter Logo" />
         <ul>
           <li><a href="">About</a></li>
-          <li><a href="">Services & Pricing</a></li>
+          <li><a href="/html/services&pricing.html">Services & Pricing</a></li>
           <li><a href="">Contact</a></li>
           <li><a href="">New to Cat Sitting?</a></li>
           <li><a href="">Policies & Booking Terms</a></li>
@@ -79,7 +79,7 @@
         </p>
         <p>
           For details on what's included in each visit and how much it costs,
-          head to the <a href="">Services & Pricing</a> section.
+          head to the <a href="/html/services&pricing.html">Services & Pricing</a> section.
         </p>
       </section>
       <section>
@@ -294,12 +294,18 @@
                 required
               />
               <label for="time-slots">Preferred time slots</label>
-              <input
-                type="text"
-                id="time-slots"
-                class="input"
-                placeholder="Morning/Afternoon/Evening/No Preference"
-              />
+
+              <div id="time-slots" class="checkbox-group">
+                <label><input type="checkbox" value="morning" /> Morning</label>
+                <label
+                  ><input type="checkbox" value="afternoon" /> Afternoon</label
+                >
+                <label><input type="checkbox" value="evening" /> Evening</label>
+                <label
+                  ><input type="checkbox" value="none" /> No Preference</label
+                >
+              </div>
+
               <label for="message">Message</label>
               <textarea
                 name="message"
@@ -346,7 +352,7 @@
             <p>© 2025 CatsAndKittensSitter. All rights reserved.</p>
             <ul>
               <li><a href="">About</a></li>
-              <li><a href="">Services & Pricing</a></li>
+              <li><a href="/html/services&pricing.html">Services & Pricing</a></li>
               <li><a href="">Contact</a></li>
               <li><a href="">New to Cat Sitting?</a></li>
               <li><a href="">Policies & Booking Terms</a></li>

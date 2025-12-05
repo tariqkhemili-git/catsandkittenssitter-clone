@@ -27,6 +27,28 @@
   margin: 2px;
 }
 
+.margin-bottom-0 {
+  margin-bottom: 0;
+}
+
+.padding-bottom-0 {
+  padding-bottom: 0;
+}
+
+.margin-0-auto {
+  margin: 0 auto;
+}
+
+.text-align-center {
+  text-align: center;
+}
+
+.center {
+  display: block;
+  width: max-content;
+  margin: 0 auto;
+}
+
 *,
 *::before,
 *::after {
@@ -108,7 +130,9 @@ nav ul a {
 .get-in-touch-btn:hover,
 .get-in-touch-btn:focus,
 .reviews-btn:hover,
-.reviews-btn:focus {
+.reviews-btn:focus,
+form .submit:hover,
+form .submit:focus {
   background-color: #444233;
   box-shadow: inset 0 0 10px #000000aa;
   box-shadow: 0 0 10px #ffffff55;
@@ -155,6 +179,12 @@ section {
 
 section h1 {
   font-size: clamp(2em, 5vw, 2.5em);
+  margin-bottom: 0.5em;
+  text-align: center;
+}
+
+section h2 {
+  font-size: clamp(1em, 3vw, 2em);
   margin-bottom: 0.5em;
   text-align: center;
 }
@@ -340,7 +370,7 @@ form .input {
 
 form .submit {
   display: block;
-  margin: 0 auto;
+  margin: 2em auto 0;
   padding: 1em 2em;
   font-size: 1.2rem;
   border: none;
@@ -350,6 +380,80 @@ form .submit {
   font-weight: 600;
   cursor: pointer;
   border-radius: 8px;
+}
+
+.checkbox-group {
+  display: block;
+  margin: 1em;
+}
+
+.checkbox-group label {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5em;
+  gap: 0.5em;
+  line-height: 1.2;
+}
+
+.checkbox-group input[type="checkbox"] {
+  margin: 0;
+  transform: translateY(0);
+}
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2em;
+  margin: 2em;
+}
+
+.grid-2 p {
+  margin: 0;
+}
+
+.grid-2 .get-in-touch-btn {
+  margin: 1em;
+}
+
+.short-visit,
+.long-visit {
+  border-radius: 24px;
+  padding: 2em;
+}
+
+.short-visit {
+  background-color: #181a1b;
+}
+
+.short-visit .get-in-touch-btn {
+  background-color: #302e21;
+}
+
+.long-visit .get-in-touch-btn {
+  background-color: #181a1b;
+}
+
+.long-visit {
+  background-color: #302e21;
+}
+
+.package-list {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.package-list li {
+  position: relative;
+  padding-left: 1.5em;
+  padding-bottom: 0.5em;
+}
+
+.package-list li::before {
+  content: "✓";
+  font-weight: bold;
+  position: absolute;
+  left: 0;
+  top: 0;
 }
 
 @media (max-width: 940px) {
@@ -402,7 +506,8 @@ form .submit {
     margin: 0;
   }
 
-  .grid {
+  .grid,
+  .grid-2 {
     grid-template-columns: 1fr;
   }
 
