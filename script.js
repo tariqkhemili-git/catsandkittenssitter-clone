@@ -1,9 +1,14 @@
 const hamburgerBtn = document.getElementById("hamburger");
 const hamburgerMenu = document.getElementById("hamburger-menu");
 
-hamburgerBtn.addEventListener("click", () => {
-  hamburgerMenu.classList.toggle("display-none-hamburger");
-});
+// This check prevents errors if the elements aren't found (like on a page without a nav)
+if (hamburgerBtn && hamburgerMenu) {
+  hamburgerBtn.addEventListener("click", () => {
+    hamburgerMenu.classList.toggle("display-none-hamburger");
+  });
+}
+
+// ... rest of your gallery code ...
 
 function createImageGallery(containerSelector) {
   const container = document.querySelector(containerSelector);
