@@ -275,6 +275,7 @@ section p a:focus {
   align-items: center;
   justify-content: center;
   border-radius: 50%;
+  padding: 0;
   border: none;
   outline: transparent;
   background-color: var(--accent-color);
@@ -282,9 +283,14 @@ section p a:focus {
   height: 50px;
   color: #fff;
   top: 50%;
-  font-size: 2rem;
   cursor: pointer;
   text-shadow: white 0 0 2px;
+}
+
+.gallery-arrow img {
+  width: 30px;
+  filter: invert();
+  opacity: 0.8;
 }
 
 .gallery-arrow:hover,
