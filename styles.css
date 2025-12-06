@@ -234,7 +234,7 @@ section p a:focus {
 
 .star {
   width: 20px;
-  filter: invert();
+  filter: brightness(0);
 }
 
 .email-link {
