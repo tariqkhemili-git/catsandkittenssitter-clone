@@ -752,7 +752,7 @@ details details {
   }
 
   /* --- UPDATED MOBILE LIST FIXES START --- */
-  /* This ensures lists align left on mobile even inside centered containers */
+  /* This ensures lists align left on mobile even inside centred containers */
   .center ul,
   .center-div ul {
     text-align: left;
