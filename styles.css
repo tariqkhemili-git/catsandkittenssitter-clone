@@ -12,16 +12,20 @@
   display: none;
 }
 
-.margin-top-1 {
-  margin-top: 1em;
-}
-
 .block {
   display: block;
 }
 
+.padding-top-1 {
+  padding-top: 1em;
+}
+
 .margin-inline-1 {
   margin-inline: 1em;
+}
+
+.margin-bottom-0 {
+  margin-bottom: 0;
 }
 
 .small-text {
@@ -35,6 +39,10 @@
 
 .margin-2px {
   margin: 2px;
+}
+
+.padding-top-1 {
+  padding-top: 1em;
 }
 
 .margin-bottom-0 {
@@ -153,6 +161,8 @@ nav ul a {
   font-weight: 600;
   cursor: pointer;
   border-radius: 8px;
+  text-decoration: none;
+  text-align: center;
 }
 
 .get-in-touch-btn:hover,
@@ -453,6 +463,10 @@ form .submit {
   width: max-content;
 }
 
+.margin-bottom-1 {
+  margin-bottom: 1em;
+}
+
 .checkbox-group label {
   display: flex;
   align-items: center;
@@ -464,6 +478,36 @@ form .submit {
 .checkbox-group input[type="checkbox"] {
   margin: 0;
   transform: translateY(0);
+}
+
+.faq {
+  display: block;
+  margin: 0 auto;
+  max-width: 90vw;
+  padding-block: 1em;
+}
+
+.faq-summary {
+  font-size: 2rem;
+  list-style: none;
+  padding-bottom: 20px;
+  border-bottom: #d9d7c7 2px solid;
+}
+
+.faq-question img {
+  display: block;
+  border-radius: 10px;
+  margin: 1em auto;
+  width: clamp(5em, 50%, 20em);
+  box-shadow: #d9d7c7 0 0 10px;
+}
+
+.faq-question .whatsapp-img {
+  width: 20px;
+}
+
+.faq-question .whatsapp-btn {
+  margin-bottom: 2em;
 }
 
 .grid-2 {
@@ -560,6 +604,26 @@ form .submit {
   margin-top: 0;
   border-bottom: #d9d7c7 2px solid;
   padding-bottom: 1em;
+}
+
+.padding-top-1 {
+  margin-top: 1em;
+}
+
+details details {
+  padding-top: 1em;
+}
+
+.read-more {
+  display: block;
+  width: 200px;
+  margin: 1em auto;
+  text-align: center;
+  font-size: 1rem;
+  border: #d9d7c7 2px solid;
+  border-radius: 10px;
+  /* list-style: none; */
+  padding: 1em 2em;
 }
 
 @media (max-width: 940px) {

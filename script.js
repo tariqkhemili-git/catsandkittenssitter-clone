@@ -1,5 +1,6 @@
 const hamburgerBtn = document.getElementById("hamburger");
 const hamburgerMenu = document.getElementById("hamburger-menu");
+const readMoreButtons = document.querySelectorAll(".read-more");
 
 // This check prevents errors if the elements aren't found (like on a page without a nav)
 if (hamburgerBtn && hamburgerMenu) {
@@ -8,7 +9,14 @@ if (hamburgerBtn && hamburgerMenu) {
   });
 }
 
-// ... rest of your gallery code ...
+// Loop through all read-more buttons to handle them individually
+if (readMoreButtons.length > 0) {
+  readMoreButtons.forEach((btn) => {
+    btn.addEventListener("click", function () {
+      this.style.display = "none";
+    });
+  });
+}
 
 function createImageGallery(containerSelector) {
   const container = document.querySelector(containerSelector);
