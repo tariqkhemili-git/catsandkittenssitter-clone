@@ -1,8 +1,31 @@
 :root {
-  --accent-color: hsl(52, 19%, 50%);
-  --nav-bg: rgb(21, 21, 19);
-  --bg: rgb(13, 13, 13);
+  /* --- NEW PALETTE --- */
+  --color-tan: #c7b8a2;
+  --color-cream: #ede9e3;
+  --color-brown: #8b7765;
+  --color-grey-dark: #4a4a47;
+  --color-black-soft: #2a2a29;
+
+  /* --- SEMANTIC VARIABLES --- */
+  --bg-primary: var(--color-black-soft);
+  --bg-secondary: var(--color-cream); /* For "light" sections */
+  --bg-tertiary: var(--color-grey-dark); /* For forms, cards, nav */
+
+  --nav-bg: var(--color-black-soft);
+
+  --text-main: var(--color-cream);
+  --text-inverse: var(--color-black-soft); /* Text on light backgrounds */
+
+  --accent-color: var(--color-brown);
+  --accent-hover: var(--color-tan);
+  --accent-text: var(--color-black-soft); /* Text color inside accent buttons */
+
+  /* Functional Colors */
+  --color-warning: #ff4d4d; /* Softened red */
+  --color-whatsapp: #25d366; /* Kept brand identity */
 }
+
+/* --- UTILITY CLASSES --- */
 
 .hidden-img {
   display: none;
@@ -33,20 +56,12 @@
 }
 
 .color-red {
-  color: red;
-  text-shadow: red 0 0 5px;
+  color: var(--color-warning);
+  text-shadow: var(--color-warning) 0 0 5px;
 }
 
 .margin-2px {
   margin: 2px;
-}
-
-.padding-top-1 {
-  padding-top: 1em;
-}
-
-.margin-bottom-0 {
-  margin-bottom: 0;
 }
 
 .padding-bottom-0 {
@@ -95,16 +110,19 @@ html,
 body {
   margin: 0;
   font-family: "Sora", sans-serif;
-  background-color: #0d0d0d;
-  color: #d9d7c7;
+  background-color: var(--bg-primary);
+  color: var(--text-main);
 }
 
+/* --- NAVIGATION --- */
+
 .nav-container {
-  background-color: #151513;
+  background-color: var(--nav-bg);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
   position: sticky;
   top: 0;
   z-index: 1000;
+  border-bottom: 1px solid var(--color-grey-dark);
 }
 
 nav {
@@ -135,7 +153,7 @@ nav ul {
 
 nav ul a {
   text-decoration: none;
-  color: #d9d7c7;
+  color: var(--text-main);
   font-weight: bold;
 }
 
@@ -145,7 +163,7 @@ nav ul a {
   border: none;
   background: transparent;
   font-size: 2rem;
-  color: #fff;
+  color: var(--text-main);
   flex-direction: column;
   cursor: pointer;
   gap: 5px;
@@ -155,18 +173,21 @@ nav ul a {
   border: none;
 }
 
+/* --- BUTTONS --- */
+
 .get-in-touch-btn {
   padding: 1em 2em;
   font-size: 1.2rem;
   border: none;
   outline: transparent;
   background-color: var(--accent-color);
-  color: #fff;
-  font-weight: 600;
+  color: var(--accent-text); /* Dark text for contrast against Brown */
+  font-weight: 700;
   cursor: pointer;
   border-radius: 8px;
   text-decoration: none;
   text-align: center;
+  transition: background-color 0.3s ease;
 }
 
 .get-in-touch-btn:hover,
@@ -175,9 +196,9 @@ nav ul a {
 .reviews-btn:focus,
 form .submit:hover,
 form .submit:focus {
-  background-color: #444233;
-  box-shadow: inset 0 0 10px #000000aa;
-  box-shadow: 0 0 10px #ffffff55;
+  background-color: var(--accent-hover);
+  color: var(--color-black-soft);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
 }
 
 nav .get-in-touch-btn {
@@ -189,14 +210,14 @@ header .get-in-touch-btn {
   padding: 1.5em 3em;
 }
 
-/* --- UPDATED LIST STYLES START --- */
+/* --- LIST STYLES --- */
 li {
   padding-top: 10px;
-  /* Ensure words break to avoid overflow */
   overflow-wrap: break-word;
   max-width: 75vw;
 }
-/* --- UPDATED LIST STYLES END --- */
+
+/* --- HEADER --- */
 
 header {
   display: flex;
@@ -209,6 +230,8 @@ header {
   text-align: center;
   text-shadow: #000 0 2px 2px;
   padding: 2em 1em;
+  /* Note: Ensure this image works with the new colour scheme, 
+     or consider adding an overlay if it's too bright */
   background: url(assets/minu-dark.jpg) no-repeat center center/cover;
 }
 
@@ -224,19 +247,23 @@ header p {
   line-height: 1.5;
 }
 
+/* --- SECTIONS --- */
+
 section {
-  color: #d9d7c7;
+  color: var(--text-main);
 }
 
+/* This is the "Light" section logic */
 section:nth-child(2n) {
-  color: #000;
-  background-color: #d9d7c7;
+  color: var(--text-inverse);
+  background-color: var(--bg-secondary);
   padding-block: 1em;
 }
 
+/* Force dark theme logic */
 .not-inverse {
-  color: #d9d7c7;
-  background-color: var(--bg);
+  color: var(--text-main);
+  background-color: var(--bg-primary);
 }
 
 section h1 {
@@ -266,20 +293,22 @@ section p {
 }
 
 section a {
-  color: #d9d7c7;
+  color: inherit; /* Adapts to dark or light sections */
   font-weight: bold;
   text-decoration: underline;
 }
 
 section a:hover,
 section a:focus {
-  color: #fff;
-  text-shadow: #fff 0 0 5px;
+  color: var(--accent-hover);
+  text-shadow: none;
 }
 
 .review-heading {
   margin-top: 1em;
 }
+
+/* --- REVIEWS --- */
 
 .grid {
   display: grid;
@@ -294,7 +323,8 @@ section a:focus {
 
 .star {
   width: 20px;
-  filter: brightness(0);
+  /* Make stars match the accent color */
+  filter: sepia(1) saturate(1) hue-rotate(-30deg) brightness(1.2);
 }
 
 .email-link {
@@ -313,10 +343,13 @@ section a:focus {
   outline: transparent;
   border-radius: 6px;
   background-color: var(--accent-color);
-  color: #fff;
+  color: var(--accent-text);
   padding: 2em 4em;
   text-decoration: none;
+  font-weight: bold;
 }
+
+/* --- GALLERY --- */
 
 .gallery-container {
   display: block;
@@ -348,13 +381,13 @@ section a:focus {
 
 .gallery-arrow img {
   width: 30px;
-  filter: invert();
+  filter: invert(); /* Keeps arrow icon white */
   opacity: 0.8;
 }
 
 .gallery-arrow:hover,
 .gallery-arrow:active {
-  background-color: #5b573e;
+  background-color: var(--accent-hover);
 }
 
 .gallery-caption {
@@ -365,9 +398,14 @@ section a:focus {
   bottom: 4px;
   width: 100%;
   height: 10%;
-  background-color: #0000008d;
-  color: #d9d7c7;
-  text-shadow: rgba(255, 255, 255, 0.755) 0 0 5px;
+  background-color: rgba(
+    42,
+    42,
+    41,
+    0.8
+  ); /* Using new dark color with opacity */
+  color: var(--text-main);
+  text-shadow: rgba(0, 0, 0, 0.7) 0 0 5px;
 }
 
 .gallery-left-arrow {
@@ -382,6 +420,8 @@ section a:focus {
   position: absolute;
 }
 
+/* --- CONTACT / FORMS --- */
+
 .contact-us-section,
 .booking-enquiry-section {
   margin: 1em;
@@ -392,7 +432,6 @@ section a:focus {
   text-align: center;
 }
 
-/* Override paragraph layout inside the contact-us section */
 .contact-us-section p {
   max-width: none;
   margin: 0 0 1.5em 0;
@@ -403,12 +442,12 @@ section a:focus {
   display: inline-flex;
   align-items: center;
   gap: 20px;
-  background-color: #25d366;
+  background-color: var(--color-whatsapp);
   padding: 1em 2em;
   margin-left: 0;
   border-radius: 10px;
   color: #fff;
-  text-shadow: #fff 0 2px 5px;
+  text-shadow: rgba(0, 0, 0, 0.2) 0 2px 5px;
   text-decoration: none;
 }
 
@@ -417,9 +456,10 @@ section a:focus {
 }
 
 .form-container {
-  background-color: #000;
+  background-color: var(--bg-tertiary); /* Replaces #000 */
   border-radius: 20px;
   padding: 3em;
+  border: 1px solid var(--color-tan);
 }
 
 form .input,
@@ -429,15 +469,28 @@ form label {
   margin: 0 auto;
 }
 
+/* Labels inside form need to contrast against the dark grey form bg */
+form label {
+  color: var(--text-main);
+  margin-bottom: 0.5em;
+  margin-top: 1em;
+}
+
 form .input {
   display: block;
-  margin-block: 1em;
+  margin-block: 0.5em;
   padding: 0.5em 1em 0.5em 0.5em;
   width: 50%;
   font-size: 1rem;
-  background-color: #ffffffd0;
+  background-color: var(--bg-secondary); /* Cream input background */
+  color: var(--text-inverse); /* Dark text inside input */
   border-radius: 10px;
   text-align: start;
+  border: none;
+}
+
+form .input::placeholder {
+  color: #888;
 }
 
 .message-input {
@@ -454,7 +507,7 @@ form .submit {
   border: none;
   outline: transparent;
   background-color: var(--accent-color);
-  color: #fff;
+  color: var(--accent-text);
   font-weight: 600;
   cursor: pointer;
   border-radius: 8px;
@@ -489,6 +542,8 @@ form .submit {
   transform: translateY(0);
 }
 
+/* --- FAQ --- */
+
 .faq {
   display: block;
   margin: 0 auto;
@@ -500,8 +555,9 @@ form .submit {
   font-size: 2rem;
   list-style: none;
   padding-bottom: 20px;
-  border-bottom: #d9d7c7 2px solid;
+  border-bottom: var(--color-tan) 2px solid;
   max-width: 90vw;
+  cursor: pointer;
 }
 
 .faq-question img {
@@ -509,7 +565,7 @@ form .submit {
   border-radius: 10px;
   margin: 1em auto;
   width: clamp(5em, 50%, 20em);
-  box-shadow: #d9d7c7 0 0 10px;
+  box-shadow: var(--color-tan) 0 0 10px;
 }
 
 .faq-question .whatsapp-img {
@@ -535,32 +591,34 @@ form .submit {
   margin: 1em;
 }
 
+/* --- PRICING CARDS --- */
+
 .short-visit,
 .long-visit {
   border-radius: 24px;
   padding: 2em;
+  color: var(--text-main);
 }
 
 .short-visit {
-  background-color: hsl(200, 6%, 50%);
-}
-
-.short-visit .get-in-touch-btn,
-.long-visit .get-in-touch-btn {
-  color: #000;
-  display: inline-block;
-}
-
-.short-visit .get-in-touch-btn {
-  background-color: hsl(52, 19%, 50%);
-}
-
-.long-visit .get-in-touch-btn {
-  background-color: hsl(200, 6%, 50%);
+  background-color: var(--bg-tertiary); /* Dark Grey */
+  border: 1px solid var(--color-tan);
 }
 
 .long-visit {
-  background-color: hsl(52, 19%, 50%);
+  background-color: var(--accent-color); /* Brown */
+  color: var(--accent-text); /* Dark text on Brown card */
+}
+
+.short-visit .get-in-touch-btn {
+  background-color: var(--accent-color);
+  color: var(--accent-text);
+}
+
+.long-visit .get-in-touch-btn {
+  background-color: var(--bg-tertiary);
+  color: var(--text-main);
+  box-shadow: none;
 }
 
 .package-list {
@@ -584,7 +642,7 @@ form .submit {
 
 .bottom-btn {
   margin-block: 3em;
-  background-color: hsl(52, 19%, 50%);
+  background-color: var(--accent-color);
   width: max-content;
 }
 
@@ -593,7 +651,7 @@ form .submit {
   display: block;
   margin: 0 auto;
   border-radius: 10px;
-  box-shadow: #d9d7c7 0 0 5px;
+  box-shadow: var(--color-tan) 0 0 5px;
 }
 
 .about-container {
@@ -612,12 +670,12 @@ form .submit {
 
 .not-for-job-app span {
   font-weight: 1000;
-  border-bottom: #d9d7c7 2px solid;
+  border-bottom: var(--color-tan) 2px solid;
 }
 
 .enquiry-form-h1 {
   margin-top: 0;
-  border-bottom: #d9d7c7 2px solid;
+  border-bottom: var(--color-tan) 2px solid;
   padding-bottom: 1em;
 }
 
@@ -635,11 +693,13 @@ details details {
   margin: 1em auto;
   text-align: center;
   font-size: 1rem;
-  border: #d9d7c7 2px solid;
+  border: var(--color-tan) 2px solid;
   border-radius: 10px;
-  /* list-style: none; */
   padding: 1em 2em;
+  cursor: pointer;
 }
+
+/* --- MEDIA QUERIES --- */
 
 @media (max-width: 940px) {
   nav ul {
@@ -654,7 +714,6 @@ details details {
     align-items: center;
     height: auto;
     padding: 1em;
-    /* Added relative position so the menu sticks to the nav bar */
     position: relative;
   }
 
@@ -678,7 +737,6 @@ details details {
 
   .hamburger-menu {
     position: absolute;
-    /* Adjusted top to match nav height approx */
     top: 100%;
     left: 0;
     display: flex;
@@ -686,23 +744,25 @@ details details {
     gap: 0.5em;
     background-color: var(--nav-bg);
     height: auto;
-    width: 100%; /* Changed from 90vw to full width of nav */
+    width: 100%;
     z-index: 9999;
     padding: 1em;
     transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
     opacity: 1;
     visibility: visible;
+    border-bottom: 1px solid var(--color-tan);
   }
 
   .hamburger-item {
     text-decoration: none;
-    color: #fff;
+    color: var(--text-main);
   }
 
   .hamburger-item:hover,
   .hamburger-item:active,
   .hamburger-item:focus {
-    text-shadow: #fff 0 2px 5px;
+    color: var(--accent-hover);
+    text-shadow: none;
   }
 
   footer .hamburger {
@@ -751,24 +811,20 @@ details details {
     padding-inline: 0;
   }
 
-  /* --- UPDATED MOBILE LIST FIXES START --- */
-  /* This ensures lists align left on mobile even inside centred containers */
   .center ul,
   .center-div ul {
     text-align: left;
-    padding-left: 1.5em; /* Gives space for bullets */
+    padding-left: 1.5em;
     margin: 0 auto;
-    width: 90vw; /* Prevents text hitting edges */
+    width: 90vw;
   }
 
   .center ul li,
   .center-div ul li {
-    padding-bottom: 0.5em; /* Spacing between policy items */
+    padding-bottom: 0.5em;
   }
-  /* --- UPDATED MOBILE LIST FIXES END --- */
 }
 
-/* IMPORTANT: This MUST be at the very bottom to override the visibility logic above */
 .display-none-hamburger {
   visibility: hidden;
   opacity: 0;
