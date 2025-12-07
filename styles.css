@@ -151,6 +151,10 @@ nav ul a {
   gap: 5px;
 }
 
+.not-for-job-app .color-red {
+  border: none;
+}
+
 .get-in-touch-btn {
   padding: 1em 2em;
   font-size: 1.2rem;
