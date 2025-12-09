@@ -88,6 +88,52 @@ const renderFormStatus = (form, message, type = "info") => {
 };
 
 /**
+ * Formats and validates the phone input into UK style (digits only, space after 5 digits).
+ * Also sets custom validity to surface native errors when incomplete.
+ * @param {HTMLInputElement} phoneInput - Phone input element
+ */
+const formatPhoneInput = (phoneInput) => {
+  if (!phoneInput) return;
+  let digits = phoneInput.value.replace(/\D+/g, "");
+  if (digits.length > 11) digits = digits.slice(0, 11);
+
+  if (digits.length > 5) {
+    phoneInput.value = `${digits.slice(0, 5)} ${digits.slice(5)}`;
+  } else {
+    phoneInput.value = digits;
+  }
+
+  if (digits.length === 0) {
+    phoneInput.setCustomValidity("");
+  } else if (digits.length < 11) {
+    phoneInput.setCustomValidity(
+      "Please enter your full phone number (11 digits)."
+    );
+  } else {
+    phoneInput.setCustomValidity("");
+  }
+};
+
+/**
+ * Normalizes postcode input to uppercase and standard spacing.
+ * @param {HTMLInputElement} postcodeInput - Postcode input element
+ */
+const normalizePostcodeInput = (postcodeInput) => {
+  if (!postcodeInput) return;
+  let rawValue = postcodeInput.value.toUpperCase().replace(/\s+/g, "");
+  if (rawValue.length > 7) rawValue = rawValue.slice(0, 7);
+
+  if (rawValue.length > 4) {
+    const splitIndex = rawValue.length - 3;
+    postcodeInput.value = `${rawValue.slice(0, splitIndex)} ${rawValue.slice(
+      splitIndex
+    )}`;
+  } else {
+    postcodeInput.value = rawValue;
+  }
+};
+
+/**
  * Ensures phone number meets UK length (11 digits).
  * @param {HTMLFormElement} form - Target form
  * @returns {boolean} True if the phone number is complete
@@ -97,6 +143,18 @@ const isPhoneComplete = (form) => {
   if (!telInput) return true; // If the field is absent, don't block submission
   const digits = telInput.value.replace(/\D+/g, "");
   return digits.length === 11;
+};
+
+/**
+ * Prevents form submission if postcode not fully entered.
+ * @param {HTMLFormElement} form - Target form
+ * @returns {boolean} True if postcode looks complete
+ */
+const isPostcodeComplete = (form) => {
+  const postcodeInput = form.querySelector("#postcode");
+  if (!postcodeInput) return true;
+  const value = postcodeInput.value.replace(/\s+/g, "");
+  return value.length >= 6; // Minimum length for a valid UK postcode without space
 };
 
 /**
@@ -170,6 +228,14 @@ document.querySelectorAll("#enquiry-form").forEach((form) => {
       );
       const telInput = form.querySelector("#tel");
       if (telInput) telInput.focus();
+      return;
+    }
+
+    // Require complete postcode
+    if (!isPostcodeComplete(form)) {
+      renderFormStatus(form, "Please enter a valid postcode.", "error");
+      const postcodeInput = form.querySelector("#postcode");
+      if (postcodeInput) postcodeInput.focus();
       return;
     }
 
